@@ -1,0 +1,288 @@
+.notes {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  overflow-x: hidden;
+}
+
+.notes h1 {
+  font-size: 56px;
+  color: #22577a;
+  text-align: center;
+  margin: 0;
+}
+
+.notes-container {
+  display: grid;
+  grid-template-columns: 1.5fr 3fr;
+  gap: 50px;
+}
+
+.add-notes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  box-sizing: border-box;
+  padding: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.add-notes h2 {
+  font-size: 42px;
+  color: #e07a5f;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.add-note {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0;
+  border: 1px solid #d9d9d9;
+}
+
+.add-note input {
+  width: 90%;
+  font-size: 22px;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+}
+.add-note input:active {
+  border: none;
+}
+
+.add-note input:focus {
+  border: none;
+}
+
+.add-note textarea {
+  width: 90%;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  height: 150px;
+  padding: 20px;
+}
+
+.add-note textarea:focus {
+  border: none;
+}
+
+.add-note:hover {
+  cursor: pointer;
+  border: 1px solid #b8b7b7;
+}
+
+.add-notes .save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  background-color: #f08080;
+  transition: all 0.4s ease-in-out;
+  padding: 10px 12px;
+  border: 1px solid #a15454;
+  border-radius: 10px;
+  margin-left: 70%;
+  margin-top: 20px;
+}
+
+.add-notes .save:hover {
+  cursor: pointer;
+  background-color: #a15454;
+  transform: translateY(5px);
+}
+
+.current-notes {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: 30px;
+  gap: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.note {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+  padding: 20px;
+  gap: 10px;
+  border: 1px solid #cdb4db;
+  background-color: #f8edeb;
+}
+
+.note-title p,
+.note-text p {
+  margin: 0;
+}
+
+.note-content .note-title {
+  font-size: 24px;
+  font-weight: 600;
+  width: 100%;
+}
+
+.note-content .note-text {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.note-content .date-time {
+  font-size: 16px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.note-btn {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.note-btn button {
+  background-color: transparent;
+  border: none;
+  transition: all 0.4s ease-in-out;
+}
+
+.fa-edit {
+  font-size: 26px;
+}
+
+.fa-trash-o {
+  font-size: 26px;
+  color: red;
+}
+
+.note-btn button:hover {
+  cursor: pointer;
+  transform: translateX(5px);
+}
+
+@media screen and (max-width: 1300px) {
+  .notes-container {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .add-note input {
+    width: 80%;
+  }
+
+  .add-note textarea {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 1080px) {
+  .note {
+    flex-direction: column;
+  }
+
+  .note-btn {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .notes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .add-notes {
+    width: 80%;
+  }
+
+  .add-note input {
+    width: 90%;
+  }
+
+  .add-note textarea {
+    width: 90%;
+  }
+
+  .note {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .note-btn {
+    width: max-content;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 870px) {
+  .note {
+    flex-direction: column;
+  }
+
+  .note-btn {
+    width: 100%;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .add-notes {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .add-note input {
+    width: 80%;
+  }
+
+  .add-note textarea {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .notes {
+    padding: 30px;
+  }
+
+  .note-title p {
+    font-size: 22px;
+  }
+
+  .note-text p {
+    font-size: 18px;
+  }
+}
