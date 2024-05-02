@@ -120,6 +120,20 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.search-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+
 .note {
   width: 100%;
   display: flex;
@@ -132,7 +146,11 @@
   background-color: #f8edeb;
 }
 
-.note-title p,
+.note-title p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 .note-text p {
   margin: 0;
 }
@@ -152,6 +170,7 @@
   font-size: 16px;
   font-weight: 400;
   font-style: italic;
+  margin-bottom: 0;
 }
 
 .note-btn {

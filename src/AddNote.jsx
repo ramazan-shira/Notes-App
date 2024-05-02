@@ -3,6 +3,7 @@ import "./style.css";
 
 const AddNote = (props) => {
   const { notes, setNotes, isOnEdit, noteOnEdit, setIsOnEdit } = props;
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
@@ -22,13 +23,12 @@ const AddNote = (props) => {
   };
 
   const handleSave = () => {
-    if (notes.find((note) => note.title === "")) {
+    if (title.toLowerCase() === "") {
       setError("Title cannot be empty");
       return;
     }
-
-    if (notes.find((note) => note.content === "")) {
-      setError("Title cannot be empty");
+    if (content.toLowerCase() === "") {
+      setError("Note content cannot be empty");
       return;
     }
 
@@ -43,13 +43,12 @@ const AddNote = (props) => {
   };
 
   const handleUpdate = () => {
-    if (notes.find((note) => note.title === "")) {
+    if (title.toLowerCase() === "") {
       setError("Title cannot be empty");
       return;
     }
-
-    if (notes.find((note) => note.content === "")) {
-      setError("Title cannot be empty");
+    if (content.toLowerCase() === "") {
+      setError("Note content cannot be empty");
       return;
     }
     const newNotes = notes.map((note) => {
@@ -81,6 +80,8 @@ const AddNote = (props) => {
           onChange={handleContent}
         ></textarea>
       </div>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
       {isOnEdit ? (
         <button className="save" onClick={handleUpdate}>
           Save

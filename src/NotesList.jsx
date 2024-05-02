@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./style.css";
 import moment from "moment";
 
@@ -6,6 +6,16 @@ const NotesList = (props) => {
   const { notes, setNotes, setIsOnEdit, setNoteOnEdit } = props;
 
   const date = moment().format("DD.MM.YYYY hh:mm");
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const [search, setSearch] = useState("");
+
+  const [filteredNotes, setFilteredNotes] = useState(notes);
+
+  useEffect(() => {
+    setFilteredNotes(notes);
+  }, [notes]);
 
   const handleDelete = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
@@ -17,8 +27,6 @@ const NotesList = (props) => {
     setNoteOnEdit(note);
   };
 
-  const [isHovered, setIsHovered] = useState(false);
-
   const handleMouseEnter = () => {
     setIsHovered(true);
   };
@@ -26,11 +34,37 @@ const NotesList = (props) => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  useEffect(() => {
+    if (search === "") {
+      setFilteredNotes(notes);
+    } else {
+      const newNotes = filteredNotes.filter((note) =>
+        note.title.toLowerCase().includes(search.toLowerCase())
+      );
+      setFilteredNotes(newNotes);
+    }
+  }, [search]);
+
   return (
     <>
       {notes.length > 0 && (
         <div className="current-notes">
-          {notes.map((note) => (
+          <div className="search-container">
+            <input
+              type="text"
+              className="search"
+              value={search}
+              onChange={handleSearch}
+              placeholder="Search note"
+            />
+          </div>
+
+          {filteredNotes.map((note) => (
             <div className="note" key={note.id}>
               <div className="note-content">
                 <div
