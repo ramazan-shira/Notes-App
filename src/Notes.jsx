@@ -1,9 +1,10 @@
-import "../node_modules/font-awesome/css/font-awesome.min.css";
-import "font-awesome/css/font-awesome.min.css";
 import AddNote from "./AddNote";
 import Note from "./NotesList";
 import "./style.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import "font-awesome/css/font-awesome.min.css";
+
+import Theme from "./Theme";
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
@@ -11,25 +12,42 @@ const Notes = () => {
   const [isOnEdit, setIsOnEdit] = useState(false);
 
   const [noteOnEdit, setNoteOnEdit] = useState();
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("darkBg");
+    } else {
+      document.body.classList.remove("darkBg");
+    }
+  }, [darkMode]);
   return (
-    <div className="notes">
-      <h1>Notes</h1>
-      <div className="notes-container">
-        <AddNote
-          notes={notes}
-          setNotes={setNotes}
-          isOnEdit={isOnEdit}
-          noteOnEdit={noteOnEdit}
-          setIsOnEdit={setIsOnEdit}
-        />
-        <Note
-          notes={notes}
-          setNotes={setNotes}
-          setIsOnEdit={setIsOnEdit}
-          setNoteOnEdit={setNoteOnEdit}
-        />
+    <>
+      <div className="theme">
+        <Theme darkMode={darkMode} setDarkMode={setDarkMode} />
       </div>
-    </div>
+      <div className={darkMode ? "notes dark" : "notes"}>
+        <h1>Notes</h1>
+        <div className="notes-container">
+          <AddNote
+            notes={notes}
+            setNotes={setNotes}
+            isOnEdit={isOnEdit}
+            noteOnEdit={noteOnEdit}
+            setIsOnEdit={setIsOnEdit}
+            darkMode={darkMode}
+          />
+          <Note
+            notes={notes}
+            setNotes={setNotes}
+            setIsOnEdit={setIsOnEdit}
+            setNoteOnEdit={setNoteOnEdit}
+            darkMode={darkMode}
+          />
+        </div>
+      </div>
+    </>
   );
 };
 

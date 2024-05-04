@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import "./style.css";
 
 const AddNote = (props) => {
-  const { notes, setNotes, isOnEdit, noteOnEdit, setIsOnEdit } = props;
+  const { notes, setNotes, isOnEdit, noteOnEdit, setIsOnEdit, darkMode } =
+    props;
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -37,9 +38,11 @@ const AddNote = (props) => {
       title: title,
       content: content,
     };
-    setNotes([...notes, newNote]);
+    const newNotes = [...notes, newNote];
+    setNotes(newNotes);
     setTitle("");
     setContent("");
+    localStorage.setItem("notes", JSON.stringify(newNotes));
   };
 
   const handleUpdate = () => {
@@ -65,9 +68,9 @@ const AddNote = (props) => {
   };
 
   return (
-    <div className="add-notes">
+    <div className={darkMode ? "add-notes dark" : "add-notes"}>
       <h2>Add Note</h2>
-      <div className="add-note">
+      <div className={darkMode ? "add-note dark" : "add-note"}>
         <input
           type="text"
           placeholder="Title"
@@ -83,11 +86,14 @@ const AddNote = (props) => {
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       {isOnEdit ? (
-        <button className="save" onClick={handleUpdate}>
+        <button
+          className={darkMode ? "save dark" : "save"}
+          onClick={handleUpdate}
+        >
           Save
         </button>
       ) : (
-        <button className="save" onClick={handleSave}>
+        <button className={darkMode ? "add dark" : "add"} onClick={handleSave}>
           Add
         </button>
       )}

@@ -1,12 +1,18 @@
 .notes {
   width: 100%;
   box-sizing: border-box;
-  padding: 50px;
+  padding: 20px 50px 50px 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 50px;
+  gap: 20px;
   overflow-x: hidden;
+}
+
+.darkBg {
+  background-image: url("./gradient-blue-abstract-background-smooth-dark-blue-with-black-vignette-studio.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .notes h1 {
@@ -14,6 +20,10 @@
   color: #22577a;
   text-align: center;
   margin: 0;
+}
+
+.notes.dark h1 {
+  color: white;
 }
 
 .notes-container {
@@ -34,12 +44,22 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.add-notes.dark {
+  box-shadow: rgba(0, 0, 0, 1) 0px 0px 0px;
+  border: none;
+  background-color: transparent;
+}
+
 .add-notes h2 {
   font-size: 42px;
-  color: #e07a5f;
+  color: #00b4d8;
   text-align: center;
   margin-top: 0;
   margin-bottom: 15px;
+}
+
+.add-notes.dark h2 {
+  color: #8eecf5;
 }
 
 .add-note {
@@ -52,6 +72,15 @@
   border: 1px solid #d9d9d9;
 }
 
+.add-note.dark {
+  border: 2px solid #d9d9d9;
+}
+
+.add-note.dark:focus,
+.add-note.dark:hover {
+  border: 2px solid white;
+}
+
 .add-note input {
   width: 90%;
   font-size: 22px;
@@ -60,6 +89,16 @@
   outline: none;
   padding: 10px 20px;
 }
+
+.add-note.dark input {
+  background-color: transparent;
+  color: white;
+}
+
+.add-note.dark input::placeholder {
+  color: rgb(232, 230, 230);
+}
+
 .add-note input:active {
   border: none;
 }
@@ -77,6 +116,15 @@
   padding: 20px;
 }
 
+.add-note.dark textarea {
+  background-color: transparent;
+  color: white;
+}
+
+.add-note.dark textarea::placeholder {
+  color: rgb(232, 230, 230);
+}
+
 .add-note textarea:focus {
   border: none;
 }
@@ -86,10 +134,44 @@
   border: 1px solid #b8b7b7;
 }
 
-.add-notes .save {
+.add-notes {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.add {
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  background-color: #0096c7;
+  transition: all 0.4s ease-in-out;
+  padding: 10px 12px;
+  border: 1px solid #023e8a;
+  border-radius: 10px;
+  margin-left: 70%;
+  margin-top: 20px;
+}
+
+.add:hover {
+  cursor: pointer;
+  background-color: #013e52;
+  transform: translateY(5px);
+}
+
+.add.dark {
+  background-color: #cae9ff;
+  color: #1b4965;
+  border: 1px solid #1b4965;
+}
+
+.add.dark:hover {
+  cursor: pointer;
+  background-color: #5fa8d3;
+  transform: translateY(5px);
+}
+
+.save {
   font-size: 22px;
   font-weight: 600;
   color: white;
@@ -102,9 +184,15 @@
   margin-top: 20px;
 }
 
-.add-notes .save:hover {
+.save.dark {
+  background-color: #f8e3e0;
+  color: #e85d5a;
+  border: 1px solid #e85d5a;
+}
+
+.save.dark:hover {
   cursor: pointer;
-  background-color: #a15454;
+  background-color: #f9c0b6;
   transform: translateY(5px);
 }
 
@@ -118,6 +206,12 @@
   padding: 30px;
   gap: 30px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.current-notes.dark {
+  box-shadow: rgba(0, 0, 0, 1) 0px 0px 0px;
+  border: none;
+  background-color: transparent;
 }
 
 .search-container {
@@ -134,6 +228,16 @@
   border-radius: 10px;
 }
 
+.search-container.dark input {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.search-container.dark input::placeholder {
+  color: rgb(232, 230, 230);
+}
+
 .note {
   width: 100%;
   display: flex;
@@ -146,13 +250,26 @@
   background-color: #f8edeb;
 }
 
+.note.dark {
+  border: 2px solid #bde0fe;
+  background-color: transparent;
+}
+
 .note-title p {
   margin: 0;
   margin-bottom: 10px;
 }
 
+.note-title.dark p {
+  color: white;
+}
+
 .note-text p {
   margin: 0;
+}
+
+.note-text.dark p {
+  color: white;
 }
 
 .note-content .note-title {
@@ -171,6 +288,10 @@
   font-weight: 400;
   font-style: italic;
   margin-bottom: 0;
+}
+
+.date-time.dark {
+  color: white;
 }
 
 .note-btn {
@@ -192,14 +313,59 @@
   font-size: 26px;
 }
 
+.fa-edit::before {
+  font-size: 24px;
+}
+
+.fa-edit.dark {
+  color: white;
+}
+
 .fa-trash-o {
   font-size: 26px;
   color: red;
 }
 
+.fa-trash-o::before {
+  font-size: 24px;
+}
+
+.fa-trash-o.dark {
+  color: rgb(253, 0, 0);
+}
 .note-btn button:hover {
   cursor: pointer;
   transform: translateX(5px);
+}
+
+.theme {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px 100px;
+}
+
+.theme-icon {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #f8edeb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.theme-icon:hover {
+  cursor: pointer;
+}
+
+.theme-icon img {
+  width: 25px;
+  height: 25px;
 }
 
 @media screen and (max-width: 1300px) {

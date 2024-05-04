@@ -3,7 +3,7 @@ import "./style.css";
 import moment from "moment";
 
 const NotesList = (props) => {
-  const { notes, setNotes, setIsOnEdit, setNoteOnEdit } = props;
+  const { notes, setNotes, setIsOnEdit, setNoteOnEdit, darkMode } = props;
 
   const date = moment().format("DD.MM.YYYY hh:mm");
 
@@ -20,6 +20,7 @@ const NotesList = (props) => {
   const handleDelete = (id) => {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
+    localStorage.setItem("notes", JSON.stringify(notes));
   };
 
   const handleEdit = (note) => {
@@ -50,11 +51,19 @@ const NotesList = (props) => {
     }
   }, [search]);
 
+  useEffect(() => {
+    const savedNotes = JSON.parse(localStorage.getItem("notes"));
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
   return (
     <>
       {notes.length > 0 && (
-        <div className="current-notes">
-          <div className="search-container">
+        <div className={darkMode ? "current-notes dark" : "current-notes"}>
+          <div
+            className={darkMode ? "search-container dark" : "search-container"}
+          >
             <input
               type="text"
               className="search"
@@ -65,10 +74,11 @@ const NotesList = (props) => {
           </div>
 
           {filteredNotes.map((note) => (
-            <div className="note" key={note.id}>
+            <div className={darkMode ? "note dark" : "note"} key={note.id}>
               <div className="note-content">
                 <div
-                  className="note-title"
+                  className={darkMode ? "note-title dark" : "note-title"}
+                  key={note.id}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -82,7 +92,7 @@ const NotesList = (props) => {
                   )}
                 </div>
                 <div
-                  className="note-text"
+                  className={darkMode ? "note-text dark" : "note-text"}
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -96,15 +106,21 @@ const NotesList = (props) => {
                   )}
                 </div>
 
-                <p className="date-time">{date}</p>
+                <p className={darkMode ? "date-time dark" : "date-time"}>
+                  {date}
+                </p>
               </div>
               <div className="note-btn">
                 <button onClick={() => handleEdit(note)}>
-                  <i className="fa fa-edit"></i>
+                  <i
+                    className={darkMode ? "fa fa-edit dark" : "fa fa-edit"}
+                  ></i>
                 </button>
                 <button>
                   <i
-                    className="fa fa-trash-o"
+                    className={
+                      darkMode ? "fa fa-trash-o dark" : "fa fa-trash-o"
+                    }
                     onClick={() => handleDelete(note.id)}
                   ></i>
                 </button>
