@@ -82,7 +82,7 @@
 }
 
 .add-note input {
-  width: 90%;
+  width: 88%;
   font-size: 22px;
   font-weight: 600;
   border: none;
@@ -108,7 +108,7 @@
 }
 
 .add-note textarea {
-  width: 90%;
+  width: 88%;
   border: none;
   outline: none;
   font-size: 20px;
@@ -426,6 +426,10 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
+  }
+
+  .theme {
+    padding: 20px 50px;
   }
 }
 
