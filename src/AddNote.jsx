@@ -43,6 +43,7 @@ const AddNote = (props) => {
     setTitle("");
     setContent("");
     localStorage.setItem("notes", JSON.stringify(newNotes));
+    setError("");
   };
 
   const handleUpdate = () => {
@@ -62,9 +63,12 @@ const AddNote = (props) => {
       return note;
     });
     setNotes(newNotes);
+    localStorage.setItem("notes", JSON.stringify(newNotes));
+
     setIsOnEdit(false);
     setContent("");
     setTitle("");
+    setError("");
   };
 
   return (
