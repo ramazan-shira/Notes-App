@@ -17,7 +17,7 @@ const Theme = (props) => {
     if (savedTheme) {
       setDarkMode(JSON.parse(savedTheme));
     }
-  }, []);
+  }, [setDarkMode]);
   return (
     <div className="change-theme">
       <button onClick={handleTheme} className="theme-icon">
