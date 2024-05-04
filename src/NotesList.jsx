@@ -49,14 +49,14 @@ const NotesList = (props) => {
       );
       setFilteredNotes(newNotes);
     }
-  }, [search]);
+  }, [filteredNotes, notes, search]);
 
   useEffect(() => {
     const savedNotes = JSON.parse(localStorage.getItem("notes"));
     if (savedNotes) {
       setNotes(savedNotes);
     }
-  }, []);
+  }, [setNotes]);
   return (
     <>
       {notes.length > 0 && (

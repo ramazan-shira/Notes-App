@@ -14,7 +14,7 @@ const AddNote = (props) => {
       setTitle(noteOnEdit.title);
       setContent(noteOnEdit.content);
     }
-  }, [noteOnEdit]);
+  }, [noteOnEdit, isOnEdit]);
   const handleTitle = (e) => {
     setTitle(e.target.value);
   };
