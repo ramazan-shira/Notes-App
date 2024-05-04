@@ -105,7 +105,6 @@ const NotesList = (props) => {
                     </p>
                   )}
                 </div>
-
                 <p className={darkMode ? "date-time dark" : "date-time"}>
                   {date}
                 </p>
